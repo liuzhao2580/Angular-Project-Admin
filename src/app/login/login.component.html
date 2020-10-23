@@ -1,17 +1,18 @@
-<form nz-form  class="login-form">
+<form nz-form [formGroup]='validateForm' class="login-form"  (ngSubmit)="submitForm()">
+    <p class="login-form-title">登录</p>
     <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-control nzErrorTip="请输入用户名">
             <nz-input-group nzPrefixIcon="user">
-                <input type="text" nz-input placeholder="Username" />
+                <input type="text" formControlName="userName" nz-input placeholder="用户名" />
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-form-control nzErrorTip="请输入密码">
             <nz-input-group nzPrefixIcon="lock">
-                <input type="password" nz-input placeholder="Password" />
+                <input type="password" formControlName="password" nz-input placeholder="密码" />
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">登录</button>
 </form>
