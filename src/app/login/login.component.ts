@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import {FormBuilder } from '@angular/forms'
+import {FormBuilder, Validators} from '@angular/forms'
 
 @Component({
     selector: 'app-login',
@@ -7,19 +7,27 @@ import {FormBuilder } from '@angular/forms'
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    validateForm
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private formBulider: FormBuilder) {
 
-    ngOnInit(): void {
-        this.validateForm = this.formBuilder.group({
-            userName: '',
-            password: ''
+    }
+    validateForm
+    ngOnInit() :void {
+        this.validateForm = this.formBulider.group({
+            userName: [null, [Validators.required]],
+            password: [null, [Validators.required]]
         })
     }
 
-    // 用户登录
-    submitForm():void{
-        console.log(this.validateForm.value);
-        
+    // 提交按钮
+    onSubmit():void {
+        for (const key in this.validateForm.controls) {
+            this.validateForm.controls[key].markAsDirty()
+            this.validateForm.controls[key].updateValueAndValidity()
+        }
+        // 说明校验成功，可以发送数据请求
+        if(this.validateForm.status === 'VALID') {
+            console.log(this.validateForm.value);
+            
+        }
     }
 }
