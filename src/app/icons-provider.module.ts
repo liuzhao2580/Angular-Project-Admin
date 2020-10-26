@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
-import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon'
+import { UserOutline, LockOutline } from '@ant-design/icons-angular/icons'
 
-import {UserOutline, LockOutline} from '@ant-design/icons-angular/icons'
+import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon'
 
 const icons = [UserOutline, LockOutline]
 

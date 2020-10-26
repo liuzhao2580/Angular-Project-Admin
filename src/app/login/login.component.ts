@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
     validateForm
     ngOnInit() :void {
         this.validateForm = this.formBulider.group({
-            userName: [null, [Validators.required]],
-            password: [null, [Validators.required]]
+            userName: ['admin', [Validators.required]],
+            password: ['admin', [Validators.required]]
         })
     }
 

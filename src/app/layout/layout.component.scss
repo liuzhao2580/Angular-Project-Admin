@@ -1,0 +1,39 @@
+.layout-box {
+    width: 100vw;
+    height: 100vh;
+}
+.sider-box {
+    background-color: #fff;
+    height: 100vh;
+    overflow: auto;
+    .sider-ul {
+        height: 100%;
+    }
+}
+nz-header {
+    background-color: #fff;
+    padding: 0;
+    border-bottom: 1px solid #f0f0f0;
+    .sider-status {
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        width: 64px;
+        text-align: center;
+        &:hover {
+            color: #1890ff;
+        }
+    }
+}
+nz-breadcrumb {
+    display: inline-block;
+}
+.container-box {
+    overflow: auto;
+    height: 100%;
+    background-color: #fff;
+}
+.inner-content {
+    padding: 0 16px;
+    overflow: auto;
+}
