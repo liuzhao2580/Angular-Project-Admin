@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
-import { DashboardComponent } from './dashboard/dashboard.component'
 import { LayoutComponent } from './layout.component'
+
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { DocumentComponent } from './document/document.component'
 const routes: Routes = [
     {
         path: '',
@@ -15,6 +17,14 @@ const routes: Routes = [
             {
                 path: 'dashboard',
                 component: DashboardComponent
+            },
+            {
+                path: 'document',
+                component: DocumentComponent
+            },
+            {
+                path: 'article',
+                loadChildren: ()=> import('./article/article.module').then(m => m.ArticleModule)
             }
         ]
     }

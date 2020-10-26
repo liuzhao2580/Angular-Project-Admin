@@ -7,9 +7,10 @@ import { NzMenuModule } from 'ng-zorro-antd/menu'
 
 import { LayoutRoutingModule } from './layout-routing.module'
 import { LayoutComponent } from './layout.component'
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DocumentComponent } from './document/document.component'
 @NgModule({
-    declarations: [LayoutComponent, DashboardComponent],
+    declarations: [LayoutComponent, DashboardComponent, DocumentComponent],
     imports: [CommonModule, LayoutRoutingModule, NzLayoutModule, NzIconModule, NzBreadCrumbModule, NzMenuModule]
 })
 export class LayoutModule {}
