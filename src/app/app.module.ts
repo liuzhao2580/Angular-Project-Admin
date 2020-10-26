@@ -13,11 +13,12 @@ import { zh_CN } from 'ng-zorro-antd/i18n'
 import { registerLocaleData } from '@angular/common'
 import zh from '@angular/common/locales/zh'
 import { IconsProviderModule } from './icons-provider.module'
-import { NzLayoutModule } from 'ng-zorro-antd/layout'
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { Error404Component } from './error404/error404.component'
 
 registerLocaleData(zh)
 @NgModule({
-    declarations: [AppComponent, LoginComponent],
+    declarations: [AppComponent, LoginComponent, Error404Component],
     imports: [
         BrowserModule,
         ...NGZORRO_arr,
