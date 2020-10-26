@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import {FormBuilder, Validators} from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'app-login',
@@ -7,7 +8,8 @@ import {FormBuilder, Validators} from '@angular/forms'
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private formBulider: FormBuilder) {
+    constructor(private formBulider: FormBuilder,
+        private router : Router) {
 
     }
     validateForm
@@ -26,8 +28,8 @@ export class LoginComponent implements OnInit {
         }
         // 说明校验成功，可以发送数据请求
         if(this.validateForm.status === 'VALID') {
-            console.log(this.validateForm.value);
-            
+            console.log(this.validateForm.value)
+            this.router.navigateByUrl('/dashboard')
         }
     }
 }
