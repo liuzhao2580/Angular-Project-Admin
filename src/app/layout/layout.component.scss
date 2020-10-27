@@ -1,32 +1,24 @@
 .layout-box {
     width: 100vw;
     height: 100vh;
+    flex-direction: row;
+    overflow-x: hidden;
 }
-.sider-box {
+.app-aside {
+    flex: 0 0 200px;
+    max-width: 200px;
+    min-width: 200px;
+    width: 200px;
     background-color: #fff;
     height: 100vh;
     overflow: auto;
-    .sider-ul {
-        height: 100%;
-    }
 }
-nz-header {
-    background-color: #fff;
-    padding: 0;
-    border-bottom: 1px solid #f0f0f0;
-    .sider-status {
-        cursor: pointer;
-        display: inline-block;
-        height: 100%;
-        width: 64px;
-        text-align: center;
-        &:hover {
-            color: #1890ff;
-        }
-    }
+
+.app-container {
+
 }
-nz-breadcrumb {
-    display: inline-block;
+.app-header {
+
 }
 .container-box {
     overflow: auto;

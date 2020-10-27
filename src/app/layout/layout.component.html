@@ -1,51 +1,14 @@
 <nz-layout class="layout-box">
-    <nz-sider class="sider-box" nzCollapsible [(nzCollapsed)]="isCollapsed" nzTheme="light" [nzTrigger]="null">
-        <div class="logo"></div>
-        <ul nz-menu nzTheme="light" nzMode="inline" class="sider-ul">
-            <li nz-submenu nzTitle="User" nzIcon="user">
-                <ul>
-                    <li nz-menu-item>Tom</li>
-                    <li nz-menu-item>Bill</li>
-                    <li nz-menu-item>Alex</li>
-                </ul>
-            </li>
-            <li nz-submenu nzTitle="Team" nzIcon="team">
-                <ul>
-                    <li nz-menu-item>Team 1</li>
-                    <li nz-menu-item>Team 2</li>
-                </ul>
-            </li>
-            <li nz-submenu nzTitle="Team" nzIcon="team">
-                <ul>
-                    <li nz-menu-item>Team 1</li>
-                    <li nz-menu-item>Team 2</li>
-                </ul>
-            </li>
-            <li nz-submenu nzTitle="Team" nzIcon="team">
-                <ul>
-                    <li nz-menu-item>Team 1</li>
-                    <li nz-menu-item>Team 2</li>
-                </ul>
-            </li>
-            <li nz-menu-item>
-                <i nz-icon nzType="file"></i>
-                <span>File</span>
-            </li>
-        </ul>
-    </nz-sider>
-    <nz-layout>
-        <nz-header>
-            <div class="sider-status" (click)="isCollapsed = !isCollapsed">
-                <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
-            </div>
-            <nz-breadcrumb>
-                <nz-breadcrumb-item>User</nz-breadcrumb-item>
-                <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-            </nz-breadcrumb>
-        </nz-header>
+    <!-- 侧边栏 -->
+    <app-aside class="app-aside"></app-aside>
+    <nz-layout class="app-container">
+        <!-- 头部 -->
+        <app-header class="app-header"></app-header>
+        <!-- 内容区域 -->
         <nz-content class="container-box">
-            
-            <div class="inner-content"><router-outlet></router-outlet></div>
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
         </nz-content>
     </nz-layout>
 </nz-layout>

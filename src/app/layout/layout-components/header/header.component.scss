@@ -1,0 +1,18 @@
+nz-header {
+    background-color: #fff;
+    padding: 0;
+    border-bottom: 1px solid #f0f0f0;
+    .sider-status {
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        width: 64px;
+        text-align: center;
+        &:hover {
+            color: #1890ff;
+        }
+    }
+}
+nz-breadcrumb {
+    display: inline-block;
+}
