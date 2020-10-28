@@ -13,10 +13,7 @@ export class HeaderComponent implements OnInit {
     ngOnInit(): void {}
     // 点击 改变侧边栏展开关闭按钮
     siderStatus(): void {
-        this.isCollapsed = this.baseStoreService.Aside_status.value.status
-        this.baseStoreService.changeStatus(!this.isCollapsed)
-        this.baseStoreService.Aside_status.subscribe(res => {
-            this.isCollapsed = res.status
-        })
+        this.baseStoreService.AsideChange.subscribe(status => this.isCollapsed = status)
+        this.baseStoreService.setAsideChange(!this.isCollapsed)
     }
 }

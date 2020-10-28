@@ -10,8 +10,7 @@ import { BaseStoreService } from '@/app/store-service/base-store/base-store.serv
 export class AsideComponent implements OnInit {
     isCollapsed: boolean 
     constructor(private baseStoreService : BaseStoreService) {
-        this.isCollapsed = this.baseStoreService.Aside_status.value.status
-        console.log(789, '789')
+        this.baseStoreService.AsideChange.subscribe(state => this.isCollapsed = state)
     }
 
     ngOnInit(): void {
