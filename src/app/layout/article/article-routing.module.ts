@@ -14,10 +14,12 @@ const routes: Routes = [
             },
             {
                 path: 'list',
+                data: {title: '文章列表', icon:'unordered-list'},
                 component: ArticleListComponent
             },
             {
                 path: 'create',
+                data: {title: '文章创建', icon:'file-add'},
                 component: ArticleCreateComponent
             }
         ]

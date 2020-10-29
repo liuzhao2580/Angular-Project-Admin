@@ -16,14 +16,17 @@ const routes: Routes = [
             },
             {
                 path: 'dashboard',
+                data: {title:'首页', icon: 'home'},
                 component: DashboardComponent
             },
             {
                 path: 'document',
+                data: {title:'文档', icon: 'exception'},
                 component: DocumentComponent
             },
             {
                 path: 'article',
+                data: {title:'文章', icon: 'profile'},
                 loadChildren: ()=> import('./article/article.module').then(m => m.ArticleModule)
             }
         ]

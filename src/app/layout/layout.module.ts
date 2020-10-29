@@ -26,4 +26,7 @@ import { HeaderComponent } from './layout-components/header/header.component'
     imports: [CommonModule, LayoutRoutingModule, NzLayoutModule, NzIconModule, NzBreadCrumbModule, NzMenuModule],
     providers:[BaseStoreService]
 })
-export class LayoutModule {}
+export class LayoutModule {
+    constructor() {
+    }
+}

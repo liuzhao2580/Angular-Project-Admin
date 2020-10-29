@@ -13,6 +13,7 @@ export class LayoutComponent implements OnInit {
 
     ngOnInit(): void {}
 
+    // 当 isCollapsed 为 true 侧边栏闭合时 侧边栏的样式
     _AsideStyle() {
         if (this.isCollapsed) {
             return {
