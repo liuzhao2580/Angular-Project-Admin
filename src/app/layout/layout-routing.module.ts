@@ -12,17 +12,17 @@ const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: '/dashboard'
+                redirectTo: 'dashboard'
             },
             {
                 path: 'dashboard',
-                data: {title:'首页', icon: 'home'},
-                component: DashboardComponent
+                component: DashboardComponent,
+                data: {title:'首页', icon: 'home'}
             },
             {
                 path: 'document',
-                data: {title:'文档', icon: 'exception'},
-                component: DocumentComponent
+                component: DocumentComponent,
+                data: {title:'文档', icon: 'exception'}
             },
             {
                 path: 'article',

@@ -13,15 +13,17 @@ import { LayoutComponent } from './layout.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { DocumentComponent } from './document/document.component'
 import { AsideComponent } from './layout-components/aside/aside.component'
-import { HeaderComponent } from './layout-components/header/header.component'
+import { HeaderComponent } from './layout-components/header/header.component';
+import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component'
 
 @NgModule({
     declarations: [
         LayoutComponent,
         AsideComponent,
         HeaderComponent,
+        BreadcrumbComponent,
         DashboardComponent,
-        DocumentComponent
+        DocumentComponent,
     ],
     imports: [CommonModule, LayoutRoutingModule, NzLayoutModule, NzIconModule, NzBreadCrumbModule, NzMenuModule],
     providers:[BaseStoreService]

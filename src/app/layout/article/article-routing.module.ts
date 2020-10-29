@@ -10,7 +10,7 @@ const routes: Routes = [
             {
                 path: '',
                 pathMatch:'full',
-                redirectTo: '/list'
+                redirectTo: '/article/list'
             },
             {
                 path: 'list',
