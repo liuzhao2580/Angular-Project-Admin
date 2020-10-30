@@ -1,22 +1,25 @@
 <nz-sider class="sider-box" nzCollapsible [(nzCollapsed)]="isCollapsed" nzTheme="light" [nzTrigger]="null">
     <div class="logo">{{ isCollapsed }}</div>
     <ul nz-menu nzTheme="light" nzMode="inline" class="sider-ul">
-        <ng-template ngFor let-menu [ngForOf]='AsideRoutes' let-i='index'>
+        <ng-template ngFor let-menu [ngForOf]="AsideRoutes" let-i="index">
             <!-- menu.children 说明是一级路由 -->
             <ng-template [ngIf]="!menu.children">
-                <li nz-menu-item nzMatchRouter [routerLink]='menu.path'>
-                    <i nz-icon [nzType]="menu.data.icon"></i>
-                    <span>{{ menu.data.title }}</span>
+                <li nz-menu-item nzMatchRouter nzMatchRouter>
+                    <a [routerLink]="menu.path"
+                        ><i nz-icon [nzType]="menu.data.icon"></i> <span>{{ menu.data.title }}</span>
+                    </a>
                 </li>
             </ng-template>
             <!-- 说明存在二级路由 -->
-            <ng-template [ngIf]='menu.children'>
-                <li nz-submenu [nzTitle]="menu.data.title" [nzIcon]="menu.data.icon" [nzOpen]='menu.data.submenuOpen'>
+            <ng-template [ngIf]="menu.children">
+                <li nz-submenu [nzTitle]="menu.data.title" [nzIcon]="menu.data.icon" [nzOpen]="menu.data.submenuOpen">
                     <ul>
-                        <ng-template ngFor let-childrenMenu [ngForOf]='menu.children'>
-                            <li nz-menu-item nzMatchRouter [routerLink]='childrenMenu.path'>
-                                <i nz-icon [nzType]="childrenMenu.data.icon"></i>
-                                <span>{{ childrenMenu.data.title }}</span>
+                        <ng-template ngFor let-childrenMenu [ngForOf]="menu.children">
+                            <li nz-menu-item nzMatchRouter>
+                                <a [routerLink]="childrenMenu.path">
+                                    <i nz-icon [nzType]="childrenMenu.data.icon"></i>
+                                    <span>{{ childrenMenu.data.title }}</span>
+                                </a>
                             </li>
                         </ng-template>
                     </ul>
