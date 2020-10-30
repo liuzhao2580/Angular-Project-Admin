@@ -1,8 +1,8 @@
-<nz-breadcrumb>
+<nz-breadcrumb >
     <nz-breadcrumb-item class="breadcrumb-item">
         <a routerLink='/'>首页</a>
     </nz-breadcrumb-item>
-    <nz-breadcrumb-item class="breadcrumb-item" *ngFor='let item of breadcrumb;let i =index'>
+    <nz-breadcrumb-item [@breadcrumbAnimate] class="breadcrumb-item" *ngFor='let item of breadcrumb;let i =index'>
         <a [routerLink]='item.path'>{{item.data.title}}</a>
     </nz-breadcrumb-item>
 </nz-breadcrumb>
