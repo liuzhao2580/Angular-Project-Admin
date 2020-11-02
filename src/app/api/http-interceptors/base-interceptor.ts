@@ -18,21 +18,24 @@ export class BaseInterceptor implements HttpInterceptor {
         console.log(req, 'req')
         return next.handle(req).pipe(mergeMap((event: any) => {
             // 只有当请求的返回状态是 httpresponse  并且 状态码是 200 的时候，才说明请求成功
-            if(event instanceof HttpResponse && event.status === 200) return of(event)
+            if(event instanceof HttpResponse && event.status === 200) return this.handleError(event)
+            return of(event)
         }),
         // 说明请求失败
         catchError((err: HttpErrorResponse) => this.handleError(err)))
     }
-    private handleError(error):Observable<any> {
-        switch (error.status) {
+    private handleError(event: HttpResponse<any> | HttpErrorResponse | any):Observable<any> {
+        console.log(event, 'event')
+        switch (event.status) {
+            case 200: 
+                break
             case 404:
                 this.message.error("请求地址错误")
                 break;
-        
             default:
-                this.message.error(error.statusText)
+                this.message.error(event.statusText || event)
                 break;
         }
-        return of(error)
+        return of(event)
     }
 }

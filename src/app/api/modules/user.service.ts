@@ -8,7 +8,7 @@ export class UserService {
     constructor(private http : HttpConfigService) {}
     // 获取用户登录验证码
     public login_code_API() {
-        return this.http.httpGET('/pictureCode1')
+        return this.http.httpGET('/pictureCode')
     }
     // 用户登录
     public login_API(params) {
