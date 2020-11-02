@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 import {FormBuilder, Validators} from '@angular/forms'
 import { Router } from '@angular/router'
-import { HttpClient } from '@angular/common/http'
+
+import { UserService } from '@/app/api/modules/user.service'
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     constructor(private formBulider: FormBuilder,
         private router : Router,
         private domSanitizer: DomSanitizer,
-        private httpClient: HttpClient) {}
+        private userAPI: UserService,) {}
     validateForm
     ngOnInit() :void {
         this.validateForm = this.formBulider.group({
@@ -27,9 +28,8 @@ export class LoginComponent implements OnInit {
 
     // 首先获取图片验证码
     gainPicCode():void {
-        this.httpClient.get('/api/pictureCode').subscribe(data=> {
-            console.log(data, 'data')
-             this.picCode = this.domSanitizer.bypassSecurityTrustHtml(data.data)
+        this.userAPI.login_code_API().subscribe(value => {
+            this.picCode = this.domSanitizer.bypassSecurityTrustHtml(value['data'])
         })
     }
     // 提交按钮
@@ -40,10 +40,9 @@ export class LoginComponent implements OnInit {
         }
         // 说明校验成功，可以发送数据请求
         if(this.validateForm.status === 'VALID') {
-            console.log(this.validateForm.value)
             // this.router.navigateByUrl('/dashboard')
-            this.httpClient.post('/api/login',this.validateForm.value).subscribe(data=> {
-                console.log(data, 'data')
+            this.userAPI.login_API(this.validateForm.value).subscribe(value => {
+                console.log(value, 'value')
             })
         }
     }
