@@ -1,10 +1,10 @@
-<form nz-form  class="login-form" [formGroup]='validateForm' (ngSubmit)='onSubmit()'>
+<form nz-form class="login-form" [formGroup]="validateForm" (ngSubmit)="onSubmit()">
     <p class="login-form-title">登录</p>
     <nz-form-item>
         <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="用户名">用户名</nz-form-label>
-        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="请输入用户名" nzRequired >
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="请输入用户名" nzRequired>
             <nz-input-group nzPrefixIcon="user">
-                <input type="text" nz-input formControlName='userName' placeholder="用户名" />
+                <input type="text" nz-input formControlName="userName" placeholder="用户名" />
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
@@ -12,19 +12,18 @@
         <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="密码">密码</nz-form-label>
         <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="请输入密码">
             <nz-input-group nzPrefixIcon="lock">
-                <input type="password" formControlName='password' nz-input placeholder="密码" />
+                <input type="password" formControlName="password" nz-input placeholder="密码" />
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
         <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="验证码">验证码</nz-form-label>
-        <nz-form-control [nzSm]="10" [nzXs]="10" nzErrorTip="请输入验证码">
+        <nz-form-control class="pic-code" [nzSm]="10" [nzXs]="10" nzErrorTip="请输入验证码">
             <nz-input-group>
-                <input formControlName='code' nz-input placeholder="验证码" />
+                <input formControlName="code" nz-input placeholder="验证码" />
             </nz-input-group>
         </nz-form-control>
-        <span nz-col [nzSm]="10" [nzXs]="10" class="pic-code-box" [innerHTML]='picCode'></span>
-        
+        <span nz-col [nzSm]="10" [nzXs]="10" class="pic-code-box" [innerHTML]="picCode"></span>
     </nz-form-item>
     <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">登录</button>
 </form>

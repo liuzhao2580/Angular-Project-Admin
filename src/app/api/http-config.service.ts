@@ -17,11 +17,19 @@ export class HttpConfigService {
         })
     }
     constructor(private httpClient: HttpClient) {}
-    // GET 请求
-    public httpGET(url): Observable<any> {
-        return this.httpClient.get(this.baseURL + url)
+    /**
+     * GET 请求
+     * @param {string} url 请求地址 
+     * @param {any} params 请求参数，可以不传 
+     */
+    public httpGET(url, params): Observable<any> {
+        return this.httpClient.get(this.baseURL + url, params)
     }
-    // POST 请求
+    /**
+     * POST 请求
+     * @param {string} url 请求地址 
+     * @param {any} params 请求参数，可以不传 
+     */
     public httpPOST(url, params): Observable<any> {
         return this.httpClient.post(this.baseURL + url, params)
     }
