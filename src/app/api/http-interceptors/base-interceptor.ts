@@ -1,5 +1,5 @@
 /**
- * 统一处理请求错误
+ * 统一处理请求 拦截
  */
 import { Injectable } from '@angular/core'
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest,HttpErrorResponse, HttpHeaderResponse, HttpResponse } from '@angular/common/http'
