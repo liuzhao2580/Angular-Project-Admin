@@ -17,6 +17,9 @@ import { NGZORRO_arr } from '../utils/import-NG-ZORRO'
 import { LoginComponent } from './login/login.component'
 import { Error404Component } from './error404/error404.component'
 
+// 导入拦截器
+import { httpInterceptorProvider } from './api/http-interceptors/index'
+
 registerLocaleData(zh)
 @NgModule({
     declarations: [AppComponent, LoginComponent, Error404Component],
@@ -31,7 +34,7 @@ registerLocaleData(zh)
         ...NGZORRO_arr,
         IconsProviderModule
     ],
-    providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+    providers: [httpInterceptorProvider, { provide: NZ_I18N, useValue: zh_CN }],
     bootstrap: [AppComponent]
 })
 export class AppModule {
