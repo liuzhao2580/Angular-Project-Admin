@@ -10,8 +10,8 @@ import { getCookie } from '@/utils/cookies'
 })
 export class HttpConfigService {
     baseURL: string = '/api'
-    static httpOptions = {
-        header: new HttpHeaders({
+    private httpOptions = {
+        headers: new HttpHeaders({
             'Content-Type': 'application/json',
             'x-csrf-token': getCookie('csrfToken')
         })
@@ -31,7 +31,7 @@ export class HttpConfigService {
      * @param {any} params 请求参数，可以不传 
      */
     public httpPOST(url, params): Observable<any> {
-        return this.httpClient.post(this.baseURL + url, params)
+        return this.httpClient.post(this.baseURL + url, params, this.httpOptions)
     }
     // DELETE 请求
     // PUT 请求

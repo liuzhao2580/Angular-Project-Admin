@@ -2,6 +2,6 @@ import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzLayoutModule } from 'ng-zorro-antd/layout'
-import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzMessageModule } from 'ng-zorro-antd/message'
 
-export const NGZORRO_arr = [NzLayoutModule,NzInputModule,NzButtonModule,NzFormModule, NzMessageModule]
+export const NGZORRO_arr = [NzLayoutModule, NzInputModule, NzButtonModule, NzFormModule, NzMessageModule]
