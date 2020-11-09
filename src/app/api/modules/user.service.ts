@@ -7,7 +7,7 @@ import { HttpConfigService } from '../http-config.service'
 export class UserService {
     constructor(private http : HttpConfigService) {}
     // 获取 csrf-token 发送一条随机请求
-    public login_code_API() {
+    public CSRFToken_API() {
         return this.http.httpGET('/CSRFToken')
     }
     // 用户登录

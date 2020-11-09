@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
     // 首先获取图片验证码
     gainPicCode(): void {
-        this.userAPI.login_code_API().subscribe((value) => {
+        this.userAPI.CSRFToken_API().subscribe((value) => {
             this.picCode = this.domSanitizer.bypassSecurityTrustHtml(value['data'])
         })
     }
