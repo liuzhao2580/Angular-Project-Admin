@@ -2,7 +2,7 @@
  * 统一处理请求 拦截
  */
 import { Injectable } from '@angular/core'
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest,HttpErrorResponse, HttpHeaderResponse, HttpResponse } from '@angular/common/http'
+import { HttpInterceptor, HttpHandler, HttpRequest,HttpErrorResponse, HttpHeaderResponse, HttpResponse } from '@angular/common/http'
 
 import { Observable, of } from 'rxjs'
 import { catchError, mergeMap } from 'rxjs/operators'
@@ -28,6 +28,7 @@ export class BaseInterceptor implements HttpInterceptor {
         console.log(event, 'event')
         switch (event.status) {
             case 200: 
+                if(event.body.code !== 0) event.body.msg ? this.message.error(event.body.msg || event) : ''
                 break
             case 404:
                 this.message.error("请求地址错误")
