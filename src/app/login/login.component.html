@@ -16,14 +16,5 @@
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
-        <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="验证码">验证码</nz-form-label>
-        <nz-form-control class="pic-code" [nzSm]="10" [nzXs]="10" nzErrorTip="请输入验证码">
-            <nz-input-group>
-                <input formControlName="code" nz-input placeholder="验证码" />
-            </nz-input-group>
-        </nz-form-control>
-        <span nz-col [nzSm]="10" [nzXs]="10" class="pic-code-box" [innerHTML]="picCode"></span>
-    </nz-form-item>
     <button nz-button class="login-form-button login-form-margin" [nzLoading]='loginLoading' [nzType]="'primary'">登录</button>
 </form>
