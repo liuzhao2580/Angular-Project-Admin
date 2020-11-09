@@ -10,12 +10,6 @@ import { getCookie } from '@/utils/cookies'
 })
 export class HttpConfigService {
     baseURL: string = '/proxy'
-    private httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'x-csrf-token': getCookie('csrfToken')
-        })
-    }
     constructor(private httpClient: HttpClient) {}
     /**
      * GET 请求
@@ -31,7 +25,7 @@ export class HttpConfigService {
      * @param {any} params 请求参数，可以不传 
      */
     public httpPOST(url, params): Observable<any> {
-        return this.httpClient.post(this.baseURL + url, params, this.httpOptions)
+        return this.httpClient.post(this.baseURL + url, params)
     }
     // DELETE 请求
     // PUT 请求

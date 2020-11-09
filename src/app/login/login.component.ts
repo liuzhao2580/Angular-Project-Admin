@@ -24,8 +24,7 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
         this.validateForm = this.formBulider.group({
             userName: ['admin', [Validators.required]],
-            password: ['admin', [Validators.required]],
-            code: ['', [Validators.required]]
+            password: ['admin', [Validators.required]]
         })
         this.gainPicCode()
     }
@@ -45,10 +44,10 @@ export class LoginComponent implements OnInit {
         // 说明校验成功，可以发送数据请求
         if (this.validateForm.status === 'VALID') {
             this.loginLoading = true
-            // this.router.navigateByUrl('/dashboard')
             this.userAPI.login_API(this.validateForm.value).subscribe({
-                next(value) {
-                    console.log(value, 'value')
+                next: ()=> {
+                    // this.router.navigateByUrl('/dashboard')
+                    console.log(this, 'this')
                 },
                 complete: ()=> this.loginLoading = false
             })
