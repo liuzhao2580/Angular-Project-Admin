@@ -9,7 +9,7 @@ import { getCookie } from '@/utils/cookies'
     providedIn: 'root'
 })
 export class HttpConfigService {
-    baseURL: string = '/api'
+    baseURL: string = '/proxy'
     private httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export class HttpConfigService {
      * @param {string} url 请求地址 
      * @param {any} params 请求参数，可以不传 
      */
-    public httpGET(url, params): Observable<any> {
+    public httpGET(url, params?:any): Observable<any> {
         return this.httpClient.get(this.baseURL + url, params)
     }
     /**

@@ -1,10 +1,10 @@
 {
-    "/api": {
+    "/proxy": {
       "target": "http://localhost:7001/v1",
       "secure": false,
       "changeOrigin": true,
       "pathRewrite": {
-          "^/api" : ""
+          "^/proxy" : ""
       }
     }
   }
