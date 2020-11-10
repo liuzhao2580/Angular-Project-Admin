@@ -1,7 +1,12 @@
 import Cookies from "js-cookie"
 
-// 设置 cookies
-export const setCookie = (name, value, days = 1) => {
+/**
+ * 设置 cookies
+ * @param {string} name 保存的名称
+ * @param {any} value 保存的数据
+ * @param {number} days 过期时间 以天为单位
+ */
+export const setCookie = (name:string, value:any, days:number = 1) => {
     return Cookies.set(name, value, { expires: days })
 }
 

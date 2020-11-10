@@ -4,9 +4,11 @@ import { LayoutComponent } from './layout.component'
 
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { DocumentComponent } from './document/document.component'
+import { LayoutAuthGuard } from '@/app/routeAuth/layout-auth.guard'
 const routes: Routes = [
     {
         path: '',
+        canActivateChild: [LayoutAuthGuard],
         component: LayoutComponent,
         children: [
             {
