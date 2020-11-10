@@ -14,4 +14,8 @@ export class UserService {
     public login_API(params) {
         return this.http.httpPOST('/login', params)
     }
+    // 获取用户基本资料 params 用户ID
+    public userInfo_API(params) {
+        return this.http.httpGET(`/api/userInfo/${params}`)
+    }
 }
