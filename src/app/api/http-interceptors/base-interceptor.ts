@@ -24,7 +24,6 @@ export class BaseInterceptor implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpHeaderResponse | HttpResponse<any>> {
-        console.log(req, 'req')
         // 设置请求头
         const setHeaders = {
             'x-csrf-token': getCookie('csrfToken')
@@ -49,7 +48,6 @@ export class BaseInterceptor implements HttpInterceptor {
     private handleData(
         event: HttpResponse<any> | HttpErrorResponse | any
     ): Observable<any> {
-        console.log(event, 'event')
         switch (event.status) {
             case 200:
                 if (event.body.code !== 0)
