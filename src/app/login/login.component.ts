@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { DomSanitizer } from '@angular/platform-browser'
 import { FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 
+import { setCookie } from '@/utils/cookies'
+import { setStorage } from '@/utils/storage'
 import { UserService } from '@/app/api/modules/user.service'
 
 @Component({
@@ -11,14 +12,12 @@ import { UserService } from '@/app/api/modules/user.service'
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    picCode
     validateForm
     // 按钮加载中
     loginLoading: boolean = false
     constructor(
         private formBulider: FormBuilder,
         private router: Router,
-        private domSanitizer: DomSanitizer,
         private userAPI: UserService
     ) {}
     ngOnInit(): void {
@@ -26,14 +25,12 @@ export class LoginComponent implements OnInit {
             userName: ['admin', [Validators.required]],
             password: ['admin', [Validators.required]]
         })
-        this.gainPicCode()
+        this.gainCSRFToken()
     }
 
-    // 首先获取图片验证码
-    gainPicCode(): void {
-        this.userAPI.CSRFToken_API().subscribe((value) => {
-            this.picCode = this.domSanitizer.bypassSecurityTrustHtml(value['data'])
-        })
+    // 首先获取 csrftoken
+    gainCSRFToken(): void {
+        this.userAPI.CSRFToken_API().subscribe()
     }
     // 提交按钮
     onSubmit(): void {
@@ -45,9 +42,14 @@ export class LoginComponent implements OnInit {
         if (this.validateForm.status === 'VALID') {
             this.loginLoading = true
             this.userAPI.login_API(this.validateForm.value).subscribe({
-                next: ()=> {
-                    // this.router.navigateByUrl('/dashboard')
-                    console.log(this, 'this')
+                next: ({data})=> {
+                    console.log(data, 'value')
+                    setCookie('token', data.token)
+                    setStorage("userInfo", {
+                        userId: data.userId,
+                        user_role: data.user_role,
+                    })
+                    this.router.navigateByUrl('/dashboard')
                 },
                 complete: ()=> this.loginLoading = false
             })

@@ -44,8 +44,7 @@ export class LayoutAuthGuard implements CanActivate, CanActivateChild {
         if (getToken) return true
         else {
             this.modal.warning({
-                nzTitle: '<i>该用户未登录或登录已失效，请重新登录</i>',
-                nzOnOk: () => {}
+                nzTitle: '该用户未登录或登录已失效，请重新登录'
             })
         }
         return this.router.parseUrl('/login')
