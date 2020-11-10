@@ -14,7 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import { DocumentComponent } from './document/document.component'
 import { AsideComponent } from './layout-components/aside/aside.component'
 import { HeaderComponent } from './layout-components/header/header.component';
-import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component'
+import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component';
+import { PersonalComponent } from './layout-components/header/components/personal/personal.component'
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { BreadcrumbComponent } from './layout-components/header/components/bread
         AsideComponent,
         HeaderComponent,
         BreadcrumbComponent,
+        PersonalComponent,
         DashboardComponent,
         DocumentComponent,
     ],
