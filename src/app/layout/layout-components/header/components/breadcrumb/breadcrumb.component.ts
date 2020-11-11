@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
+import { NavigationEnd, Router } from '@angular/router'
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations'
-import { filter } from 'rxjs/operators'
 
 import Routes from '@/app/routes'
 
@@ -31,7 +30,7 @@ import Routes from '@/app/routes'
 export class BreadcrumbComponent implements OnInit {
     // 面包屑
     breadcrumb = []
-    constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+    constructor(private router: Router) {}
 
     ngOnInit(): void {
         this.getActivedRouteInfo()
