@@ -15,7 +15,8 @@ import { DocumentComponent } from './document/document.component'
 import { AsideComponent } from './layout-components/aside/aside.component'
 import { HeaderComponent } from './layout-components/header/header.component';
 import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component';
-import { PersonalComponent } from './layout-components/header/components/personal/personal.component'
+import { PersonalComponent } from './layout-components/header/components/personal/personal.component';
+import { SubmenuComponent } from './layout-components/aside/components/submenu/submenu.component'
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { PersonalComponent } from './layout-components/header/components/persona
         PersonalComponent,
         DashboardComponent,
         DocumentComponent,
+        SubmenuComponent,
     ],
     imports: [CommonModule, LayoutRoutingModule, NzLayoutModule, NzIconModule, NzBreadCrumbModule, NzMenuModule],
     providers:[BaseStoreService]

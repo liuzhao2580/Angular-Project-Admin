@@ -45,7 +45,8 @@ export class AsideComponent implements OnInit {
                     if (item.data.auth) {
                         if (hasPromisser(item, user_role)) {
                             getArr.push({
-                                ...item.children
+                                ...item,
+                                children: item.children
                             })
                         }
                     }
