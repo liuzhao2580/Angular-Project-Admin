@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { NavigationEnd, Router } from '@angular/router'
-import { trigger, state, style, animate, transition, keyframes } from '@angular/animations'
+import { trigger, style, animate, transition, keyframes } from '@angular/animations'
 
 import Routes from '@/app/routes'
 

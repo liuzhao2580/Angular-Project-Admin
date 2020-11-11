@@ -3,6 +3,9 @@
         <a routerLink='/'>首页</a>
     </nz-breadcrumb-item>
     <nz-breadcrumb-item [@breadcrumbAnimate] class="breadcrumb-item" *ngFor='let item of breadcrumb;let i =index'>
-        <a [routerLink]='item.path'>{{item.data.title}}</a>
+        <ng-template [ngIf]='i !== breadcrumb.length - 1 && !item.breadcrumbClickFlag'>
+            <a [routerLink]='item.path'>{{item.data.title}}</a>
+        </ng-template >
+        <ng-template [ngIf]='i === breadcrumb.length - 1 || item.breadcrumbClickFlag === false'>{{item.data.title}}</ng-template>
     </nz-breadcrumb-item>
 </nz-breadcrumb>
