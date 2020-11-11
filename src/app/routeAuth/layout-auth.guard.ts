@@ -22,7 +22,7 @@ import routes from '@/app/routes/index'
 
 /* 校验是否可以进入页面 */
 export class LayoutAuthGuard implements CanActivate, CanActivateChild {
-    constructor(private modal: NzModalService, private router: Router, private activeRoute: ActivatedRoute) {}
+    constructor(private modal: NzModalService, private router: Router) {}
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
@@ -31,40 +31,51 @@ export class LayoutAuthGuard implements CanActivate, CanActivateChild {
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        return this.checkLogin()
+            return this.checkLogin(state)
     }
 
     canActivateChild(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): true | UrlTree {
-        
-        console.log(this.router.url, 'this.router')
-        return this.checkLogin()
+    ): boolean | UrlTree {
+        return this.checkLogin(state)
     }
 
-    checkLogin(){
+    checkLogin(state){
         // 获取 token 是否存在
         const getToken = getCookie('token')
         // 获取用户的权限
         const {user_role} = JSON.parse(getStorage('userInfo'))
         if (getToken) {
-            function authLoop(routersArr = routes) {
-                return routersArr.find(route => {
-                    if(route.children) {
-                        authLoop(route.children)
-                    }
-                    else {
-                        if(route.data.auth) {
-                            console.log( route.data.auth, ' route.data.auth')
-                            return route.data.auth.find(dataItem => dataItem === user_role)
+            function checkLoop(routeArr = routes) {
+                return routeArr.find(item => {
+                    // 1.说明当前的路由匹配
+                    if(item.path === state.url) {
+                        // 1.1判断当前路由 是否存在 auth 字段
+                        // 1.2如果存在就说明 需要验证当前的登录人是否有权访问
+                        if(item.data.auth) {
+                            return item.data.auth.find(authItem => authItem === user_role)
                         }
+                        // 1.3不存在 auth 字段 说明 任何人都可以访问
                         else return true
                     }
+                    // 2.如果当前路由不匹配，再判断是否存在 children 字段
+                    else if(item.children) {
+                       return checkLoop(item.children)
+                    }
+                    else return false
                 })
             }
-            // console.log(authLoop(), 'authLoop')
-            return true
+            const getPromisser = checkLoop()
+            // 说明该路由 有权访问
+            if(getPromisser) return true
+            // 说明该路由无权访问
+            else {
+                this.modal.warning({
+                    nzTitle: '没有权限'
+                })
+                return false
+            }
         }
         else {
             this.modal.warning({
