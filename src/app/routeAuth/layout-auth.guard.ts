@@ -5,8 +5,7 @@ import {
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     UrlTree,
-    Router,
-    ActivatedRoute
+    Router
 } from '@angular/router'
 import { Observable } from 'rxjs'
 
@@ -71,10 +70,7 @@ export class LayoutAuthGuard implements CanActivate, CanActivateChild {
             if(getPromisser) return true
             // 说明该路由无权访问
             else {
-                this.modal.warning({
-                    nzTitle: '没有权限'
-                })
-                return false
+                return this.router.parseUrl('/404')
             }
         }
         else {

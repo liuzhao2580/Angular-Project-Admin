@@ -15,6 +15,10 @@ const routes:interface_router[] = [
         data: {title:'文档', icon: 'exception'}
     },
     {
+        path: '/rrrr',
+        data: {title:'test1', icon: 'exception', auth: [1]}
+    },
+    {
         path: '/article',
         data: {title:'文章', icon: 'profile',submenuOpen: false},
         children: [
@@ -27,6 +31,26 @@ const routes:interface_router[] = [
                 data: {title: '文章创建', icon:'file-add', auth: [1]}
             }
         ]
-    }
+    },
+    {
+        path: '/aaaa',
+        data: {title:'test', icon: 'profile',submenuOpen: false, auth: [1]},
+        children: [
+            {
+                path: '/aaaa/bbbb',
+                data: {title: 'a-b', icon:'unordered-list'}
+            },
+            {
+                path: '/aaaa/cccc',
+                data: {title: 'a-c', icon:'file-add'},
+                children: [
+                    {
+                        path: '/aaaa/cccc/dddd',
+                        data: {title: 'a-c-d', icon:'unordered-list'}
+                    },
+                ]
+            }
+        ]
+    },
 ]
 export default routes
