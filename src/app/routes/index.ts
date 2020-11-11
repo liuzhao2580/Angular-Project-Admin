@@ -1,18 +1,18 @@
+import interface_router from './interface'
 /**
  * @param {object} data 保存着一些侧边栏数据需要的
  * @param {boolean} submenuOpen 侧边栏的 submenu 是否展开 true  展开，默认都是 false
  * @param {boolean} breadcrumbFlag 是否显示在面包屑导航中 默认都是true 显示， false 不显示
- * @param {any} auth  用户可以返回的权限  如果没有，说明所有用户都可以访问
+ * @param {array} auth  用户可以返回的权限  如果没有，说明所有用户都可以访问
  */
-
-export default [
+const routes:interface_router[] = [
     {
         path: '/dashboard',
         data: {title: '首页', icon: 'home'}
     },
     {
         path: '/document',
-        data: {title:'文档', icon: 'exception', auth: [1]}
+        data: {title:'文档', icon: 'exception'}
     },
     {
         path: '/article',
@@ -29,3 +29,4 @@ export default [
         ]
     }
 ]
+export default routes
