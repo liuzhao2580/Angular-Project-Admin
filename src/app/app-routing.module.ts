@@ -12,8 +12,12 @@ const routes: Routes = [
         loadChildren: () => import('./layout/layout.module').then((m) => m.LayoutModule)
     },
     {
-        path: '**',
+        path: '404',
         component: Error404Component
+    },
+    {
+        path: '**',
+        redirectTo: '/404'
     }
 ]
 
