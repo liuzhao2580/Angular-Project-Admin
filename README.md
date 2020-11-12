@@ -47,3 +47,43 @@
 - :not(sub_selector)：只有当元素不匹配子选择器 sub_selector 的时候才选取。
 
 - selector1, selector2：无论 selector1 还是 selector2 匹配时都选取。
+
+### `Angular`路由指定跳转和返回上一级
+###### 跳转到指定页面
+```js
+import { Router } from '@angular/router'
+@Component({
+    selector: 'app-error404',
+    templateUrl: './error404.component.html',
+    styleUrls: ['./error404.component.scss']
+})
+export class Error404Component implements OnInit {
+    constructor( private router: Router ) {}
+
+    ngOnInit(): void {}
+    // 返回上一页
+    public backHistory():void {
+      // 两个方法都可以
+        this.router.parseUrl('/dashboard')     // 把字符串解析为 UrlTree
+        this.router.navigateByUrl('/dashboard') // 基于所提供的 URL 进行导航，必须使用绝对路径
+    }
+}
+```
+###### 返回上一级[Location](https://angular.cn/api/common/Location#location)
+```js
+import { Location } from '@angular/common'
+@Component({
+    selector: 'app-error404',
+    templateUrl: './error404.component.html',
+    styleUrls: ['./error404.component.scss']
+})
+export class Error404Component implements OnInit {
+    constructor( private location: Location ) {}
+
+    ngOnInit(): void {}
+    // 返回上一页
+    public backHistory():void {
+        this.location.back()
+    }
+}
+```
