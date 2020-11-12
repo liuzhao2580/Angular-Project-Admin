@@ -9,7 +9,5 @@ export class SubmenuComponent implements OnInit {
     @Input() AsideRoutes: Array<any>
     constructor() {}
 
-    ngOnInit(): void {
-        console.log(this.AsideRoutes, 'this.AsideRoutes')
-    }
+    ngOnInit(): void {}
 }

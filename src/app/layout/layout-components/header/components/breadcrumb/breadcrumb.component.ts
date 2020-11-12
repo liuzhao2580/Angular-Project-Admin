@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { NavigationEnd, Router } from '@angular/router'
+import { NavigationEnd, Router,ActivatedRoute } from '@angular/router'
+import { Title } from '@angular/platform-browser'
 import { trigger, style, animate, transition, keyframes } from '@angular/animations'
+
+import { filter, map } from 'rxjs/operators'
 
 import Routes from '@/app/routes'
 
@@ -30,19 +33,21 @@ import Routes from '@/app/routes'
 export class BreadcrumbComponent implements OnInit {
     // 面包屑
     breadcrumb = []
-    constructor(private router: Router) {}
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private title: Title) {
+        this.getActivedRouteInfo()
+    }
 
     ngOnInit(): void {
-        this.getActivedRouteInfo()
         this.watchRoute()
     }
 
     // 监听路由
     watchRoute(): void {
-        this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.getActivedRouteInfo()
-            }
+        this.router.events.pipe(
+            filter(event => event instanceof NavigationEnd),
+            map(() => this.router)
+        ).subscribe(() => {
+            this.getActivedRouteInfo()
         })
     }
 
@@ -64,5 +69,22 @@ export class BreadcrumbComponent implements OnInit {
         })
         this.breadcrumb = []
         this.breadcrumb.splice(1, 0, ...gainRoutes)
+
+        let setCurrentTitle:string = 'Angular - '
+
+        function setTitleLoop(routesArr = Routes) {
+            return routesArr.find(item => {
+                if(getCurrentRoute === item.path) {
+                    setCurrentTitle += item.data.title
+                    return true
+                }
+                else if(item.children) {
+                    const getFind = setTitleLoop(item.children)
+                    return getFind
+                }
+            })
+        }
+        setTitleLoop()
+        this.title.setTitle(setCurrentTitle)
     }
 }
