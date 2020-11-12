@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { NzLayoutModule } from 'ng-zorro-antd/layout'
-import { NzIconModule } from 'ng-zorro-antd/icon'
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb'
-import { NzMenuModule } from 'ng-zorro-antd/menu'
+
+// 导入 antd 组件
+import { getModule } from './import-ng-zorro-antd'
 
 // 导入 service 服务
 import { BaseStoreService } from '../store-service/base-store/base-store.service'
@@ -13,9 +12,9 @@ import { LayoutComponent } from './layout.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { DocumentComponent } from './document/document.component'
 import { AsideComponent } from './layout-components/aside/aside.component'
-import { HeaderComponent } from './layout-components/header/header.component';
-import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component';
-import { PersonalComponent } from './layout-components/header/components/personal/personal.component';
+import { HeaderComponent } from './layout-components/header/header.component'
+import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component'
+import { PersonalComponent } from './layout-components/header/components/personal/personal.component'
 import { SubmenuComponent } from './layout-components/aside/components/submenu/submenu.component'
 
 @NgModule({
@@ -27,12 +26,11 @@ import { SubmenuComponent } from './layout-components/aside/components/submenu/s
         PersonalComponent,
         DashboardComponent,
         DocumentComponent,
-        SubmenuComponent,
+        SubmenuComponent
     ],
-    imports: [CommonModule, LayoutRoutingModule, NzLayoutModule, NzIconModule, NzBreadCrumbModule, NzMenuModule],
-    providers:[BaseStoreService]
+    imports: [CommonModule, LayoutRoutingModule, ...getModule],
+    providers: [BaseStoreService]
 })
 export class LayoutModule {
-    constructor() {
-    }
+    constructor() {}
 }

@@ -5,4 +5,11 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout'
 import { NzMessageModule } from 'ng-zorro-antd/message'
 import { NzModalModule } from 'ng-zorro-antd/modal'
 
-export const NGZORRO_arr = [NzLayoutModule, NzInputModule, NzButtonModule, NzFormModule, NzMessageModule, NzModalModule]
+export const NGZORRO_arr = [
+    NzLayoutModule,
+    NzInputModule,
+    NzButtonModule,
+    NzFormModule,
+    NzMessageModule,
+    NzModalModule
+]
