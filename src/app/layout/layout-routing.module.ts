@@ -19,17 +19,25 @@ const routes: Routes = [
             {
                 path: 'dashboard',
                 component: DashboardComponent,
-                data: {title:'首页', icon: 'home'}
+                data: { title: '首页', icon: 'home' }
             },
             {
                 path: 'document',
                 component: DocumentComponent,
-                data: {title:'文档', icon: 'exception'}
+                data: { title: '文档', icon: 'exception' }
             },
             {
                 path: 'article',
-                data: {title:'文章', icon: 'profile'},
-                loadChildren: ()=> import('./article/article.module').then(m => m.ArticleModule)
+                data: { title: '文章', icon: 'profile' },
+                loadChildren: () => import('./article/article.module').then((m) => m.ArticleModule)
+            },
+            {
+                path: 'multilevelMenu',
+                data: { title: '多级菜单', icon: 'menu' },
+                loadChildren: () =>
+                    import('./multilevel-menu/multilevel-menu.module').then(
+                        (m) => m.MultilevelMenuModule
+                    )
             }
         ]
     }

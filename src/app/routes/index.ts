@@ -6,48 +6,72 @@ import interface_router from './interface'
  * @param {boolean} breadcrumbClickFlag 是否可以点击此面包屑跳转页面，默认都是 true 可以 点击 ， false 不可以点击
  * @param {array} auth  用户可以返回的权限  如果没有，说明所有用户都可以访问
  */
-const routes:interface_router[] = [
+const routes: interface_router[] = [
     {
         path: '/dashboard',
-        data: {title: '首页', icon: 'home'}
+        data: { title: '首页', icon: 'home' }
     },
     {
         path: '/document',
-        data: {title:'文档', icon: 'exception'}
+        data: { title: '文档', icon: 'exception' }
     },
     {
         path: '/article',
-        data: {title:'文章', icon: 'profile',submenuOpen: false},
+        data: { title: '文章', icon: 'profile', submenuOpen: false },
         children: [
             {
                 path: '/article/list',
-                data: {title: '文章列表', icon:'unordered-list', auth: [1, 2]}
+                data: { title: '文章列表', icon: 'unordered-list', auth: [1, 2] }
             },
             {
                 path: '/article/create',
-                data: {title: '文章创建', icon:'file-add', auth: [1]}
+                data: { title: '文章创建', icon: 'file-add', auth: [1] }
             }
         ]
     },
     {
-        path: '/aaaa',
-        data: {title:'test', icon: 'profile',submenuOpen: false, auth: [1]},
+        path: '/multilevelMenu',
+        data: { title: '多级菜单', icon: 'menu' },
         children: [
             {
-                path: '/aaaa/1',
-                data: {title: 'a-1', icon:'unordered-list'},
+                path: '/multilevelMenu/one-menu',
+                data: { title: '一级菜单', icon: 'to-top' },
                 children: [
                     {
-                        path: '/aaaa/1/1',
-                        data: {title: 'a-1-1', icon:'unordered-list'}
+                        path: '/multilevelMenu/one-menu/two-menu',
+                        data: { title: '二级菜单', icon: 'car' }
                     },
+                    {
+                        path: '/multilevelMenu/one-menu/two-one-menu',
+                        data: { title: '2-1级菜单', icon: 'bulb' },
+                        children: [
+                            {
+                                path: '/multilevelMenu/one-menu/two-one-menu/three-menu',
+                                data: { title: '三级菜单', icon: 'bell' }
+                            },
+                            {
+                                path: '/multilevelMenu/one-menu/two-one-menu/three-one-menu',
+                                data: { title: '3-1级菜单', icon: 'cloud' },
+                                children: [
+                                    {
+                                        path: '/multilevelMenu/one-menu/two-one-menu/three-one-menu/four-menu',
+                                        data: { title: '四级菜单', icon: 'coffee ' }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        path: '/multilevelMenu/one-menu/two-two-menu',
+                        data: { title: '2-2级菜单', icon: 'compass' }
+                    }
                 ]
             },
             {
-                path: '/aaaa/2',
-                data: {title: 'a-2', icon:'file-add'}
+                path: '/multilevelMenu/one-one-menu',
+                data: { title: '1-1级菜单', icon: 'flag' }
             }
         ]
-    },
+    }
 ]
 export default routes
