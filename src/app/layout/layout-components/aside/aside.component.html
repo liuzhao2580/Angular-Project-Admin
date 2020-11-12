@@ -1,6 +1,12 @@
-<nz-sider class="sider-box" nzCollapsible [(nzCollapsed)]="isCollapsed" nzTheme="light" [nzTrigger]="null">
+<nz-sider
+    class="sider-box"
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    nzTheme="light"
+    [nzTrigger]="null"
+>
     <div class="logo">{{ isCollapsed }}</div>
     <ul nz-menu nzTheme="light" nzMode="inline" class="sider-ul">
-        <app-submenu [AsideRoutes]='AsideRoutes'></app-submenu>
+        <app-submenu [AsideRoutes]="AsideRoutes"></app-submenu>
     </ul>
 </nz-sider>
