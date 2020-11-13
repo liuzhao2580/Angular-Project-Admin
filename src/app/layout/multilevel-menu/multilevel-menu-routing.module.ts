@@ -11,6 +11,11 @@ const routes: Routes = [
         path: '',
         children: [
             {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/multilevel-menu/one-menu'
+            },
+            {
                 path: 'one-menu',
                 data: {title: '一级菜单',icon: 'to-top'},
                 children: [
