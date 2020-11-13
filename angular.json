@@ -77,7 +77,8 @@
                         "proxyConfig": "proxy.config.json",
                         "hmr": true,
                         "port": 4321,
-                        "open": true
+                        "open": true,
+                        "aot": true
                     },
                     "configurations": {
                         "production": {
