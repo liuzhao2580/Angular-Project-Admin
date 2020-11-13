@@ -74,7 +74,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
                         "browserTarget": "my-app:build",
-                        "proxyConfig": "proxy.config.json"
+                        "proxyConfig": "proxy.config.json",
+                        "hmr": true,
+                        "port": 4321,
+                        "open": true
                     },
                     "configurations": {
                         "production": {

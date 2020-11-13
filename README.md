@@ -2,18 +2,36 @@
 ### 每次导入惰性加载特性模块后，重启项目
 ### 每次导入惰性加载特性模块后，重启项目
 ### 每次导入惰性加载特性模块后，重启项目
-### 修改项目运行地址 直接在`package.json`文件中修改
+### 修改项目运行地址 直接在`angular.json`文件中修改[官方地址](https://angular.cn/cli/serve)
 ```json
-"scripts": {
-    "ng": "ng",
---- "start" :"ng serve",
-+++ "start": "ng serve --port 4321",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
+{
+    "projects": {
+        // 项目名称
+        "my-app": {
+            ...
+            "architect": {
+                "serve": {
+                    ...
+                    "options": {
+                        "browserTarget": "my-app:build",
+                        // 配置跨域代理
+                        "proxyConfig": "proxy.config.json",
+                        "hmr": true,
+                        "port": 4321,
+                        // 自动在浏览器开启
+                        "open": true
+                    }
+                    ...
+                }
+            }
+            ...
+        }
+    }
+}
 ```
+
+
+
 #### [父组件样式穿透](https://angular.cn/guide/component-styles#host-context) 使用`:host-content()`伪类选择器
 只有当某个祖先元素有 `CSS` 类 `theme-light` 时，才会把 `background-color` 样式应用到组件内部的所有` <h2>` 元素中。
 ```css
