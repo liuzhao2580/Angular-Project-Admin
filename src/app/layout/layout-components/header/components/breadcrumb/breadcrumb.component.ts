@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { NavigationEnd, Router,ActivatedRoute } from '@angular/router'
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router'
 import { Title } from '@angular/platform-browser'
 import { trigger, style, animate, transition, keyframes } from '@angular/animations'
 
@@ -14,18 +14,24 @@ import Routes from '@/app/routes'
     animations: [
         trigger('breadcrumbAnimate', [
             transition(':enter', [
-                animate('0.5s', keyframes([
-                    style({ opacity: 0,transform: 'translateX(100px)' }),
-                    style({ opacity: 0.5,transform: 'translateX(50px)' }),
-                    style({ opacity: 1,transform: 'translateX(0px)' })
-                ]))
+                animate(
+                    '0.5s',
+                    keyframes([
+                        style({ opacity: 0, transform: 'translateX(100px)' }),
+                        style({ opacity: 0.5, transform: 'translateX(50px)' }),
+                        style({ opacity: 1, transform: 'translateX(0px)' })
+                    ])
+                )
             ]),
             transition(':leave', [
-                animate('0.2s', keyframes([
-                    style({ opacity: 1,transform: 'translateX(0px)' }),
-                    style({ opacity: 0.5,transform: 'translateX(50px)' }),
-                    style({ opacity: 0,transform: 'translateX(100px)' })
-                ]))
+                animate(
+                    '0.2s',
+                    keyframes([
+                        style({ opacity: 1, transform: 'translateX(0px)' }),
+                        style({ opacity: 0.5, transform: 'translateX(50px)' }),
+                        style({ opacity: 0, transform: 'translateX(100px)' })
+                    ])
+                )
             ])
         ])
     ]
@@ -33,7 +39,11 @@ import Routes from '@/app/routes'
 export class BreadcrumbComponent implements OnInit {
     // 面包屑
     breadcrumb = []
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private title: Title) {
+    constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute,
+        private title: Title
+    ) {
         this.getActivedRouteInfo()
     }
 
@@ -43,12 +53,14 @@ export class BreadcrumbComponent implements OnInit {
 
     // 监听路由
     watchRoute(): void {
-        this.router.events.pipe(
-            filter(event => event instanceof NavigationEnd),
-            map(() => this.router)
-        ).subscribe(() => {
-            this.getActivedRouteInfo()
-        })
+        this.router.events
+            .pipe(
+                filter((event) => event instanceof NavigationEnd),
+                map(() => this.router)
+            )
+            .subscribe(() => {
+                this.getActivedRouteInfo()
+            })
     }
 
     // 获取当前的路由信息
@@ -56,20 +68,20 @@ export class BreadcrumbComponent implements OnInit {
         // 获取当前的路由
         const getCurrentRoute: string = this.router.url
         let gainRoutes = []
-        function findBreadcrumb(routePATH):boolean {
-            if(getCurrentRoute.indexOf(routePATH) === -1) return false
+        function findBreadcrumb(routePATH): boolean {
+            if (getCurrentRoute.indexOf(routePATH) === -1) return false
             else return true
         }
         function setBreadcrumb(routeArr = Routes) {
-            routeArr.forEach(item => {
-                if(!item.children) {
+            routeArr.forEach((item) => {
+                if (item.path === '/dashboard') return
+                if (!item.children) {
                     // 说明该路由显示在面包屑上
-                    if(item.data.breadcrumbFlag !== false) {
-                        if(findBreadcrumb(item.path)) gainRoutes.push(item)
+                    if (item.data.breadcrumbFlag !== false) {
+                        if (findBreadcrumb(item.path)) gainRoutes.push(item)
                     }
-                }
-                else {
-                    if(findBreadcrumb(item.path) && item.data.breadcrumbFlag !== false) {
+                } else {
+                    if (findBreadcrumb(item.path) && item.data.breadcrumbFlag !== false) {
                         gainRoutes.push(item)
                     }
                     setBreadcrumb(item.children)
@@ -77,18 +89,16 @@ export class BreadcrumbComponent implements OnInit {
             })
         }
         setBreadcrumb()
-        console.log(gainRoutes, 'gainRoutes')
         this.breadcrumb = gainRoutes
 
-        let setCurrentTitle:string = 'Angular - '
+        let setCurrentTitle: string = 'Angular - '
 
         function setTitleLoop(routesArr = Routes) {
-            return routesArr.find(item => {
-                if(getCurrentRoute === item.path) {
+            return routesArr.find((item) => {
+                if (getCurrentRoute === item.path) {
                     setCurrentTitle += item.data.title
                     return true
-                }
-                else if(item.children) {
+                } else if (item.children) {
                     const getFind = setTitleLoop(item.children)
                     return getFind
                 }

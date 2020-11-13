@@ -1,21 +1,24 @@
-<nz-avatar nzIcon="user" nz-dropdown [nzDropdownMenu]="menu" [nzSrc]='avatarSrc'></nz-avatar>
+<nz-avatar
+    nzIcon="user"
+    nz-dropdown
+    [nzDropdownMenu]="menu"
+    [nzSrc]="avatarSrc"
+    [nzAlt]="'A'"
+    class="avatar-box"
+></nz-avatar>
 <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-        <li nz-menu-item>1st menu item</li>
-        <li nz-menu-item>2nd menu item</li>
-        <li nz-menu-divider></li>
-        <li nz-menu-item nzDisabled>disabled menu item</li>
-        <li nz-submenu nzTitle="sub menu">
-            <ul>
-                <li nz-menu-item>3rd menu item</li>
-                <li nz-menu-item>4th menu item</li>
-            </ul>
-        </li>
-        <li nz-submenu nzDisabled nzTitle="disabled sub menu">
-            <ul>
-                <li nz-menu-item>3rd menu item</li>
-                <li nz-menu-item>4th menu item</li>
-            </ul>
+        <li nz-menu-item *ngFor="let item of dropdownList" class="dropdown-item">
+            <ng-template [ngIf]="item.title !== 'GitHub'">
+                <i nz-icon class="icon" [nzType]="item.icon" nzTheme="outline"></i>
+                <span class="title">{{ item.title }}</span>
+            </ng-template>
+            <ng-template [ngIf]="item.title === 'GitHub'">
+                <a href="https://github.com/liuzhao2580/Angular-Project-Admin" target="_block"
+                    ><i nz-icon class="icon" [nzType]="item.icon" nzTheme="outline"></i>
+                    <span class="title">{{ item.title }}</span></a
+                >
+            </ng-template>
         </li>
     </ul>
 </nz-dropdown-menu>
