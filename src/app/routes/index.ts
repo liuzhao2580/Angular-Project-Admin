@@ -35,7 +35,7 @@ const routes: interface_router[] = [
         children: [
             {
                 path: '/multilevel-menu/one-menu',
-                data: { title: '一级菜单', icon: 'to-top',level: 2 },
+                data: { title: '一级菜单', icon: 'to-top',level: 2,breadcrumbClickFlag: false },
                 children: [
                     {
                         path: '/multilevel-menu/one-menu/two-menu',
@@ -43,7 +43,7 @@ const routes: interface_router[] = [
                     },
                     {
                         path: '/multilevel-menu/one-menu/two-one-menu',
-                        data: { title: '2-1级菜单', icon: 'bulb',level: 3 },
+                        data: { title: '2-1级菜单', icon: 'bulb',level: 3},
                         children: [
                             {
                                 path: '/multilevel-menu/one-menu/two-one-menu/three-menu',
@@ -51,7 +51,7 @@ const routes: interface_router[] = [
                             },
                             {
                                 path: '/multilevel-menu/one-menu/two-one-menu/three-one-menu',
-                                data: { title: '3-1级菜单', icon: 'cloud',level: 4 },
+                                data: { title: '3-1级菜单', icon: 'cloud',level: 4 ,breadcrumbFlag: false},
                                 children: [
                                     {
                                         path: '/multilevel-menu/one-menu/two-one-menu/three-one-menu/four-menu',

@@ -56,19 +56,29 @@ export class BreadcrumbComponent implements OnInit {
         // 获取当前的路由
         const getCurrentRoute: string = this.router.url
         let gainRoutes = []
-        Routes.forEach((item) => {
-            if (getCurrentRoute !== '/dashboard') {
-                if (item.children) {
-                    const getFind = item.children.find((children_item) => children_item.path === getCurrentRoute)
-                    if (getFind) {
-                        gainRoutes.push({ path: item.path, data: item.data })
-                        gainRoutes.push({ ...getFind })
+        function findBreadcrumb(routePATH):boolean {
+            if(getCurrentRoute.indexOf(routePATH) === -1) return false
+            else return true
+        }
+        function setBreadcrumb(routeArr = Routes) {
+            routeArr.forEach(item => {
+                if(!item.children) {
+                    // 说明该路由显示在面包屑上
+                    if(item.data.breadcrumbFlag !== false) {
+                        if(findBreadcrumb(item.path)) gainRoutes.push(item)
                     }
-                } else if (item.path === getCurrentRoute) gainRoutes.push({ ...item })
-            }
-        })
-        this.breadcrumb = []
-        this.breadcrumb.splice(1, 0, ...gainRoutes)
+                }
+                else {
+                    if(findBreadcrumb(item.path) && item.data.breadcrumbFlag !== false) {
+                        gainRoutes.push(item)
+                    }
+                    setBreadcrumb(item.children)
+                }
+            })
+        }
+        setBreadcrumb()
+        console.log(gainRoutes, 'gainRoutes')
+        this.breadcrumb = gainRoutes
 
         let setCurrentTitle:string = 'Angular - '
 

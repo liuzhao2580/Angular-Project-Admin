@@ -13,7 +13,17 @@ const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: '/multilevel-menu/one-menu'
+                redirectTo: '/multilevel-menu/one-one-menu'
+            },
+            {
+                path: 'one-menu',
+                pathMatch: 'full',
+                redirectTo: '/multilevel-menu/one-menu/two-menu'
+            },
+            {
+                path: 'one-menu/two-one-menu',
+                pathMatch: 'full',
+                redirectTo: '/multilevel-menu/one-menu/two-one-menu/three-menu',
             },
             {
                 path: 'one-menu',
