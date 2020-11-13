@@ -32,7 +32,7 @@ const routes: Routes = [
                 loadChildren: () => import('./article/article.module').then((m) => m.ArticleModule)
             },
             {
-                path: 'multilevelMenu',
+                path: 'multilevel-menu',
                 data: { title: '多级菜单', icon: 'menu' },
                 loadChildren: () =>
                     import('./multilevel-menu/multilevel-menu.module').then(

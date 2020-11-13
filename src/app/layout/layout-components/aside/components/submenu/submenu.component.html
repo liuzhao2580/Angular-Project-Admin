@@ -1,7 +1,7 @@
 <ng-template ngFor let-menu [ngForOf]="AsideRoutes" let-i="index">
     <!-- menu.children 说明是一级路由 -->
     <ng-template [ngIf]="!menu.children">
-        <li nz-menu-item nzMatchRouter nzMatchRouter>
+        <li nz-menu-item nzMatchRouter>
             <a [routerLink]="menu.path"
                 ><i nz-icon [nzType]="menu.data.icon"></i>
                 <span>{{ menu.data.title }}</span>
@@ -11,6 +11,7 @@
     <!-- 说明存在二级路由 -->
     <ng-template [ngIf]="menu.children">
         <li
+        nzMatchRouter
             nz-submenu
             [nzTitle]="menu.data.title"
             [nzIcon]="menu.data.icon"

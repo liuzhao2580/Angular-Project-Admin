@@ -20,7 +20,9 @@ export class AsideComponent implements OnInit {
         private router: Router
     ) {
         this.baseStoreService.AsideChange.subscribe(
-            (state) => (this.isCollapsed = state)
+            (state) => {
+                this.isCollapsed = state
+            }
         )
     }
 

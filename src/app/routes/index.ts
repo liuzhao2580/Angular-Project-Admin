@@ -21,55 +21,55 @@ const routes: interface_router[] = [
         children: [
             {
                 path: '/article/list',
-                data: { title: '文章列表', icon: 'unordered-list', auth: [1, 2] }
+                data: { title: '文章列表', icon: 'unordered-list', level: 2,auth: [1, 2] }
             },
             {
                 path: '/article/create',
-                data: { title: '文章创建', icon: 'file-add', auth: [1] }
+                data: { title: '文章创建', icon: 'file-add', level: 2, auth: [1] }
             }
         ]
     },
     {
-        path: '/multilevelMenu',
+        path: '/multilevel-menu',
         data: { title: '多级菜单', icon: 'menu' },
         children: [
             {
-                path: '/multilevelMenu/one-menu',
-                data: { title: '一级菜单', icon: 'to-top' },
+                path: '/multilevel-menu/one-menu',
+                data: { title: '一级菜单', icon: 'to-top',level: 2 },
                 children: [
                     {
-                        path: '/multilevelMenu/one-menu/two-menu',
-                        data: { title: '二级菜单', icon: 'car' }
+                        path: '/multilevel-menu/one-menu/two-menu',
+                        data: { title: '二级菜单', icon: 'car',level: 3 }
                     },
                     {
-                        path: '/multilevelMenu/one-menu/two-one-menu',
-                        data: { title: '2-1级菜单', icon: 'bulb' },
+                        path: '/multilevel-menu/one-menu/two-one-menu',
+                        data: { title: '2-1级菜单', icon: 'bulb',level: 3 },
                         children: [
                             {
-                                path: '/multilevelMenu/one-menu/two-one-menu/three-menu',
-                                data: { title: '三级菜单', icon: 'bell' }
+                                path: '/multilevel-menu/one-menu/two-one-menu/three-menu',
+                                data: { title: '三级菜单', icon: 'bell',level: 4 }
                             },
                             {
-                                path: '/multilevelMenu/one-menu/two-one-menu/three-one-menu',
-                                data: { title: '3-1级菜单', icon: 'cloud' },
+                                path: '/multilevel-menu/one-menu/two-one-menu/three-one-menu',
+                                data: { title: '3-1级菜单', icon: 'cloud',level: 4 },
                                 children: [
                                     {
-                                        path: '/multilevelMenu/one-menu/two-one-menu/three-one-menu/four-menu',
-                                        data: { title: '四级菜单', icon: 'coffee ' }
+                                        path: '/multilevel-menu/one-menu/two-one-menu/three-one-menu/four-menu',
+                                        data: { title: '四级菜单', icon: 'coffee',level: 5 }
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        path: '/multilevelMenu/one-menu/two-two-menu',
-                        data: { title: '2-2级菜单', icon: 'compass' }
+                        path: '/multilevel-menu/one-menu/two-two-menu',
+                        data: { title: '2-2级菜单', icon: 'compass' ,level: 3}
                     }
                 ]
             },
             {
-                path: '/multilevelMenu/one-one-menu',
-                data: { title: '1-1级菜单', icon: 'flag' }
+                path: '/multilevel-menu/one-one-menu',
+                data: { title: '1-1级菜单', icon: 'flag',level: 2 }
             }
         ]
     }

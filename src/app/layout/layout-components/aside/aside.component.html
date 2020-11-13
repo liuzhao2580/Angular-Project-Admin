@@ -1,12 +1,50 @@
 <nz-sider
     class="sider-box"
+    nzTheme="light"
     nzCollapsible
     [(nzCollapsed)]="isCollapsed"
-    nzTheme="light"
     [nzTrigger]="null"
 >
     <div class="logo">{{ isCollapsed }}</div>
     <ul nz-menu nzTheme="light" nzMode="inline" class="sider-ul">
-        <app-submenu [AsideRoutes]="AsideRoutes"></app-submenu>
+        <ng-container
+            *ngTemplateOutlet="menuLoop; context: { $implicit: AsideRoutes }"
+        ></ng-container>
+        <ng-template #menuLoop let-menus>
+            <ng-container *ngFor="let menu of menus">
+                <ng-template [ngIf]="!menu.children">
+                    <li
+                        nz-menu-item
+                        nzMatchRouter
+                        [nzPaddingLeft]="
+                            isCollapsed? 0: menu.data.level * 24
+                        "
+                    >
+                        <a [routerLink]="menu.path"
+                            ><i nz-icon [nzType]="menu.data.icon"></i>
+                            <span>{{ menu.data.title }}</span>
+                        </a>
+                    </li>
+                </ng-template>
+                <ng-template [ngIf]="menu.children">
+                    <li
+                        nz-submenu
+                        nzMatchRouter
+                        [nzTitle]="menu.data.title"
+                        [nzIcon]="menu.data.icon"
+                        [nzOpen]="menu.data.submenuOpen"
+                        [nzPaddingLeft]="
+                            isCollapsed? 0: menu.data.level * 24
+                        "
+                    >
+                        <ul>
+                            <ng-container
+                                *ngTemplateOutlet="menuLoop; context: { $implicit: menu.children }"
+                            ></ng-container>
+                        </ul>
+                    </li>
+                </ng-template>
+            </ng-container>
+        </ng-template>
     </ul>
 </nz-sider>

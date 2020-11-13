@@ -44,6 +44,15 @@
 ```
 
 - [attribute]：根据属性名选取。
+```js
+@Component({
+    selector: 'div[app-submenu]',
+    templateUrl: './submenu.component.html',
+    styleUrls: ['./submenu.component.scss']
+})
+// [tranData]='tranData' 传参
+<div app-submenu [tranData]='tranData' ></div>
+```
 
 - [attribute=value]：根据属性名和属性值选取。
 
