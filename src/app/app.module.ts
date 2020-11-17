@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { RouteReuseStrategy } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http'
 import { OverlayModule } from '@angular/cdk/overlay'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -19,6 +20,8 @@ import { Error404Component } from './error404/error404.component'
 
 // 导入拦截器
 import { httpInterceptorProvider } from './api/http-interceptors/index'
+// 导入 路由缓存
+import { RouterCache } from '@/app/routes/route.cache'
 
 registerLocaleData(zh)
 @NgModule({
@@ -34,7 +37,11 @@ registerLocaleData(zh)
         ...NGZORRO_arr,
         IconsProviderModule
     ],
-    providers: [httpInterceptorProvider, { provide: NZ_I18N, useValue: zh_CN }],
+    providers: [
+        httpInterceptorProvider,
+        { provide: NZ_I18N, useValue: zh_CN },
+        { provide: RouteReuseStrategy, useClass: RouterCache }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

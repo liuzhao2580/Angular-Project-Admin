@@ -19,12 +19,12 @@ const routes: Routes = [
             {
                 path: 'dashboard',
                 component: DashboardComponent,
-                data: { title: '首页', icon: 'home' }
+                data: { title: '首页', icon: 'home',keep:true }
             },
             {
                 path: 'document',
                 component: DocumentComponent,
-                data: { title: '文档', icon: 'exception' }
+                data: { title: '文档', icon: 'exception',keep:true }
             },
             {
                 path: 'article',

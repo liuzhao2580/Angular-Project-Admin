@@ -29,7 +29,9 @@ import { SubmenuComponent } from './layout-components/aside/components/submenu/s
         SubmenuComponent
     ],
     imports: [CommonModule, LayoutRoutingModule, ...getModule],
-    providers: [BaseStoreService]
+    providers: [
+        BaseStoreService
+    ]
 })
 export class LayoutModule {
     constructor() {}
