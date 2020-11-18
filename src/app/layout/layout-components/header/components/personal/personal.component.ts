@@ -6,7 +6,7 @@ import { UserService } from '@/app/api/modules/user.service'
 import { UserStoreService } from '@/app/store-service/user-store/user-store.service'
 
 interface dropdownList {
-    icon: string,
+    icon: string
     title: string
 }
 
@@ -19,7 +19,7 @@ export class PersonalComponent implements OnInit {
     // 头像地址
     avatarSrc: string
     // 下拉框展示的数据
-    dropdownList: dropdownList [] = [
+    dropdownList: dropdownList[] = [
         {
             icon: 'user',
             title: '个人信息'
@@ -29,7 +29,11 @@ export class PersonalComponent implements OnInit {
             title: 'GitHub'
         }
     ]
-    constructor(private userService: UserService, private userStore: UserStoreService, private router: Router) {}
+    constructor(
+        private userService: UserService,
+        private userStore: UserStoreService,
+        private router: Router
+    ) {}
 
     ngOnInit(): void {
         this.init_UserInfo()
@@ -40,14 +44,13 @@ export class PersonalComponent implements OnInit {
         const { userId } = JSON.parse(getStorage('userInfo'))
         this.userService.userInfo_API(userId).subscribe({
             next: ({ data }) => {
-                console.log(data, 'data')
-                this.userStore.setUserInfo(data)
+                this.userStore._userInfo = data
                 this.avatarSrc = data.avatar
             }
         })
     }
     dropdownClick(value) {
-        if(value === '个人信息') {
+        if (value === '个人信息') {
             this.router.navigate(['personal'])
         }
     }
