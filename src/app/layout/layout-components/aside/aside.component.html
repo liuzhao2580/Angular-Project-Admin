@@ -16,26 +16,22 @@
                     <li
                         nz-menu-item
                         nzMatchRouter
-                        [nzPaddingLeft]="
-                            isCollapsed? 0: menu.data.level * 24
-                        "
+                        [nzPaddingLeft]="isCollapsed ? 0 : menu.data.level * 24"
                     >
-                        <a [routerLink]="menu.path"
+                        <a [routerLink]="menu.path" routerLinkActive="router-active"
                             ><i nz-icon [nzType]="menu.data.icon"></i>
                             <span>{{ menu.data.title }}</span>
                         </a>
                     </li>
                 </ng-template>
-                <ng-template [ngIf]="menu.children  && !menu.data.hidden">
+                <ng-template [ngIf]="menu.children && !menu.data.hidden">
                     <li
                         nz-submenu
-                        nzMatchRouter
                         [nzTitle]="menu.data.title"
                         [nzIcon]="menu.data.icon"
                         [nzOpen]="menu.data.submenuOpen"
-                        [nzPaddingLeft]="
-                            isCollapsed? 0: menu.data.level * 24
-                        "
+                        [nzPaddingLeft]="isCollapsed ? 0 : menu.data.level * 24"
+                        (nzOpenChange)="openHandler(menu.data)"
                     >
                         <ul>
                             <ng-container

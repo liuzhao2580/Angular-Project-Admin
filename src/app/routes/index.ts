@@ -1,4 +1,4 @@
-import interface_router from '@/app/ts-declare/interface/router-interface'
+import {routerArray} from '@/app/ts-declare/interface/router-interface'
 /**
  * @param {object} data 保存着一些侧边栏数据需要的
  * @param {boolean} submenuOpen 侧边栏的 submenu 是否展开 true  展开，默认都是 false
@@ -6,7 +6,7 @@ import interface_router from '@/app/ts-declare/interface/router-interface'
  * @param {boolean} breadcrumbClickFlag 是否可以点击此面包屑跳转页面，默认都是 true 可以 点击 ， false 不可以点击
  * @param {array} auth  用户可以返回的权限  如果没有，说明所有用户都可以访问
  */
-const routes: interface_router[] = [
+const routes: routerArray[] = [
     // 首页
     {
         path: '/dashboard',
@@ -40,7 +40,7 @@ const routes: interface_router[] = [
     // 多级菜单
     {
         path: '/multilevel-menu',
-        data: { title: '多级菜单', icon: 'menu' },
+        data: { title: '多级菜单', icon: 'menu', submenuOpen: false},
         children: [
             {
                 path: '/multilevel-menu/one-menu',

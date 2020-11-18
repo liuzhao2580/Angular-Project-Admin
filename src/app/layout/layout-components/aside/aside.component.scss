@@ -7,4 +7,6 @@
     }
 }
 
-
+:host-context(.ant-menu-submenu-title) .router-active {
+    color: #1890ff;
+}

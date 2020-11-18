@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 
 import { BaseStoreService } from '@/app/store-service/base-store/base-store.service'
+import {routerArray} from '@/app/ts-declare/interface/router-interface'
 
 import Routes from '@/app/routes'
 import { getStorage } from '@/utils/storage'
@@ -14,7 +15,7 @@ export class AsideComponent implements OnInit {
     // 侧边栏 展开闭合属性
     isCollapsed: boolean
     // 侧边栏数组
-    AsideRoutes: Array<object>
+    AsideRoutes: routerArray []
     constructor(
         private baseStoreService: BaseStoreService,
         private router: Router
@@ -88,5 +89,12 @@ export class AsideComponent implements OnInit {
         if (getIndex != -1) setRoutes[getIndex].data.submenuOpen = true
         
         this.AsideRoutes = setRoutes
+    }
+    // 当侧边栏展开的时候触发
+    openHandler(data):void {
+        this.AsideRoutes.forEach(item => {
+            if(data.title === item.data.title && item.children) item.data.submenuOpen = true
+            else if(item.children) item.data.submenuOpen = false
+        })
     }
 }

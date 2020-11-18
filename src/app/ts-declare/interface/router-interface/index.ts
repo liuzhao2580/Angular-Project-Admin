@@ -1,10 +1,10 @@
-export default interface routerArray {
+export interface routerArray {
     path: string  // 路径
     data: DataObject // 基本的数据
     children?: ChildrenObject[] // 子路由
 }
 
-class DataObject {
+export class DataObject {
     title: string // 名称
     icon: string // 图标
     hidden?:boolean // 是否显示在侧边栏上，默认都是false 显示在侧边栏   true 隐藏
@@ -14,7 +14,7 @@ class DataObject {
     breadcrumbFlag?: boolean // 是否显示在面包屑导航中 默认都是true 显示， false 不显示
     breadcrumbClickFlag?:boolean // 是否可以点击此面包屑跳转页面，默认都是 true 可以 点击 ， false 不可以点击
 }
-class ChildrenObject {
+export class ChildrenObject {
     path: string
     data: DataObject
     children?: ChildrenObject[]
