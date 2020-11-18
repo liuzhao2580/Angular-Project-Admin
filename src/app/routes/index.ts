@@ -1,4 +1,4 @@
-import interface_router from '@/ts-declare/interface/router-interface'
+import interface_router from '@/app/ts-declare/interface/router-interface'
 /**
  * @param {object} data 保存着一些侧边栏数据需要的
  * @param {boolean} submenuOpen 侧边栏的 submenu 是否展开 true  展开，默认都是 false
