@@ -8,7 +8,7 @@
 ></nz-avatar>
 <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-        <li nz-menu-item *ngFor="let item of dropdownList" class="dropdown-item">
+        <li nz-menu-item *ngFor="let item of dropdownList" class="dropdown-item" (click)='dropdownClick(item.title)'>
             <ng-template [ngIf]="item.title !== 'GitHub'">
                 <i nz-icon class="icon" [nzType]="item.icon" nzTheme="outline"></i>
                 <span class="title">{{ item.title }}</span>

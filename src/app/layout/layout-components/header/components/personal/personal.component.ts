@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { getStorage } from '@/utils/storage'
 import { UserService } from '@/app/api/modules/user.service'
@@ -28,7 +29,7 @@ export class PersonalComponent implements OnInit {
             title: 'GitHub'
         }
     ]
-    constructor(private userService: UserService, private userStore: UserStoreService) {}
+    constructor(private userService: UserService, private userStore: UserStoreService, private router: Router) {}
 
     ngOnInit(): void {
         this.init_UserInfo()
@@ -44,5 +45,10 @@ export class PersonalComponent implements OnInit {
                 this.avatarSrc = data.avatar
             }
         })
+    }
+    dropdownClick(value) {
+        if(value === '个人信息') {
+            this.router.navigate(['personal'])
+        }
     }
 }
