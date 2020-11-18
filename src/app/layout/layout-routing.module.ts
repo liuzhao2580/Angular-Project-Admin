@@ -38,6 +38,11 @@ const routes: Routes = [
                     import('./multilevel-menu/multilevel-menu.module').then(
                         (m) => m.MultilevelMenuModule
                     )
+            },
+            {
+                path: 'personal',
+                data: {title:'个人中心', icon : 'user'},
+                loadChildren: ()=> import('./personal/personal.module').then(m => m.PersonalModule)
             }
         ]
     }

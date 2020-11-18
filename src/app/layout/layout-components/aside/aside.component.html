@@ -12,7 +12,7 @@
         ></ng-container>
         <ng-template #menuLoop let-menus>
             <ng-container *ngFor="let menu of menus">
-                <ng-template [ngIf]="!menu.children">
+                <ng-template [ngIf]="!menu.children && !menu.data.hidden">
                     <li
                         nz-menu-item
                         nzMatchRouter
@@ -26,7 +26,7 @@
                         </a>
                     </li>
                 </ng-template>
-                <ng-template [ngIf]="menu.children">
+                <ng-template [ngIf]="menu.children  && !menu.data.hidden">
                     <li
                         nz-submenu
                         nzMatchRouter
