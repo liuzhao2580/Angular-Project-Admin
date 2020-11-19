@@ -4,7 +4,8 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb'
 import { NzMenuModule } from 'ng-zorro-antd/menu'
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown'
 import { NzAvatarModule } from 'ng-zorro-antd/avatar'
-
+import { NzCardModule } from 'ng-zorro-antd/card'
+import { NzGridModule } from 'ng-zorro-antd/grid'
 
 
 export const getModule = [
@@ -13,5 +14,7 @@ export const getModule = [
     NzBreadCrumbModule,
     NzMenuModule,
     NzAvatarModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzCardModule,
+    NzGridModule
 ]
