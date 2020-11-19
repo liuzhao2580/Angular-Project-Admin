@@ -8,16 +8,25 @@
 ></nz-avatar>
 <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-        <li nz-menu-item *ngFor="let item of dropdownList" class="dropdown-item" (click)='dropdownClick(item.title)'>
-            <ng-template [ngIf]="item.title !== 'GitHub'">
+        <li
+            nz-menu-item
+            *ngFor="let item of dropdownList"
+            class="dropdown-item"
+            (click)="dropdownClick(item.key)"
+        >
+            <ng-template [ngIf]="item.key !== 'github' && item.key !== 'logout'">
                 <i nz-icon class="icon" [nzType]="item.icon" nzTheme="outline"></i>
                 <span class="title">{{ item.title }}</span>
             </ng-template>
-            <ng-template [ngIf]="item.title === 'GitHub'">
+            <ng-template [ngIf]="item.key === 'github'">
                 <a href="https://github.com/liuzhao2580/Angular-Project-Admin" target="_block"
                     ><i nz-icon class="icon" [nzType]="item.icon" nzTheme="outline"></i>
                     <span class="title">{{ item.title }}</span></a
                 >
+            </ng-template>
+            <ng-template [ngIf]="item.key === 'logout'">
+                <i nz-icon class="icon" [nzType]="item.icon" nzTheme="outline"></i>
+                <span class="title">{{ item.title }}</span>
             </ng-template>
         </li>
     </ul>

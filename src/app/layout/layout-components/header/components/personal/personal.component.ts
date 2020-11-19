@@ -8,6 +8,7 @@ import { UserStoreService } from '@/app/store-service/user-store/user-store.serv
 interface dropdownList {
     icon: string
     title: string
+    key :string
 }
 
 @Component({
@@ -22,11 +23,18 @@ export class PersonalComponent implements OnInit {
     dropdownList: dropdownList[] = [
         {
             icon: 'user',
-            title: '个人信息'
+            title: '个人信息',
+            key: 'user'
         },
         {
             icon: 'github',
-            title: 'GitHub'
+            title: 'GitHub',
+            key: 'github'
+        },
+        {
+            icon: 'logout',
+            title: '退出登录',
+            key: 'logout'
         }
     ]
     constructor(
@@ -49,9 +57,16 @@ export class PersonalComponent implements OnInit {
             }
         })
     }
-    dropdownClick(value) {
-        if (value === '个人信息') {
-            this.router.navigate(['personal'])
+    dropdownClick(key:string) {
+        switch (key) {
+            case 'user':
+                this.router.navigate(['personal'])
+                break;
+            case 'logout':
+                this.router.navigate(['login'])
+                break;
+            default:
+                break;
         }
     }
 }
