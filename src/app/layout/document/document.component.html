@@ -1,1 +1,22 @@
-<p>document works!</p>
+<div class="document-box" nz-row [nzGutter]="20">
+    <div
+        nz-col
+        nzXs="24"
+        nzSm="12"
+        nzMd="12"
+        nzLg="6"
+        nzXl="6"
+        *ngFor="let cardItem of documentCardList"
+        (click)="cardClick(cardItem.url)"
+    >
+        <nz-card [nzCover]="coverTemplate" nzHoverable class="card-item-box">
+            <nz-card-meta
+                [nzTitle]="cardItem.title"
+                [nzDescription]="cardItem.title + '文档'"
+            ></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate>
+            <img alt="example" [src]="cardItem.img" />
+        </ng-template>
+    </div>
+</div>
