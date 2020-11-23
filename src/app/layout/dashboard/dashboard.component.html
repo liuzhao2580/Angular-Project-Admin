@@ -1,1 +1,38 @@
-<div>dashboard</div>
+<div class="dashboard-box">
+    <div class="table-box" style="width: 1000px">
+        <nz-table #nestedTable [nzData]="listOfData" [nzPageSize]="10">
+            <tbody>
+                <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+                    <tr>
+                        <td
+                            nzShowCheckbox
+                            nzShowExpand
+                            [nzExpand]="expandSet.has(data.children)"
+                            (nzExpandChange)="onExpandChange(data.children, $event)"
+                        ></td>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.age }}</td>
+                        <td>{{ data.address }}</td>
+                    </tr>
+                    <tr [nzExpand]="expandSet.has(data.children)">
+                        <nz-table
+                            #innerTable
+                            [nzData]="data.children"
+                            nzSize="middle"
+                            [nzShowPagination]="false"
+                        >
+                            <tbody>
+                                <tr *ngFor="let data of innerTable.data">
+                                    <td></td>
+                                    <td>{{ data.name }}</td>
+                                    <td>{{ data.age }}</td>
+                                    <td>{{ data.address }}</td>
+                                </tr>
+                            </tbody>
+                        </nz-table>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
