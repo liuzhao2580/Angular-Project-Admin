@@ -1,35 +1,24 @@
 <div class="dashboard-box">
     <div class="table-box" style="width: 1000px">
-        <nz-table #nestedTable [nzData]="listOfData" [nzPageSize]="10">
+        <nz-table #nzTable [nzData]="listOfData" [nzShowPagination]="false">
             <tbody>
-                <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+                <ng-template ngFor let-data [ngForOf]="nzTable.data">
                     <tr>
                         <td
-                            nzShowCheckbox
                             nzShowExpand
-                            [nzExpand]="expandSet.has(data.children)"
-                            (nzExpandChange)="onExpandChange(data.children, $event)"
+                            nzShowCheckbox
+                            [nzExpand]="expandSet.has(data.id)"
+                            style="width: 100px;"
                         ></td>
+                        <td style="width: 100px;">{{ data.name }}</td>
+                        <td style="width: 100px;">{{ data.age }}</td>
+                        <td style="width: 100px;">{{ data.address }}</td>
+                    </tr>
+                    <tr [nzExpand]="true">
+                        <td></td>
                         <td>{{ data.name }}</td>
                         <td>{{ data.age }}</td>
                         <td>{{ data.address }}</td>
-                    </tr>
-                    <tr [nzExpand]="expandSet.has(data.children)">
-                        <nz-table
-                            #innerTable
-                            [nzData]="data.children"
-                            nzSize="middle"
-                            [nzShowPagination]="false"
-                        >
-                            <tbody>
-                                <tr *ngFor="let data of innerTable.data">
-                                    <td></td>
-                                    <td>{{ data.name }}</td>
-                                    <td>{{ data.age }}</td>
-                                    <td>{{ data.address }}</td>
-                                </tr>
-                            </tbody>
-                        </nz-table>
                     </tr>
                 </ng-template>
             </tbody>

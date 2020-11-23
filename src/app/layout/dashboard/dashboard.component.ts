@@ -23,8 +23,14 @@ export class DashboardComponent implements OnInit {
             address: 'New York No. 1 Lake Park',
             children: [
                 {
+                    id: 10,
                     name: 'tewst ',
                     age: 11,
+                    address: 'London No. 1 Lake Park'
+                },
+                {
+                    name: 'tewst ',
+                    age: 88,
                     address: 'London No. 1 Lake Park'
                 }
             ]
@@ -34,29 +40,8 @@ export class DashboardComponent implements OnInit {
             name: 'Jim Green',
             age: 42,
             expand: false,
-            address: 'London No. 1 Lake Park',
-            children: [
-                {
-                    name: 'tewst ',
-                    age: 11,
-                    address: 'London No. 1 Lake Park'
-                }
-            ]
+            address: 'London No. 1 Lake Park'
         },
-        {
-            id: 3,
-            name: 'Joe Black',
-            age: 32,
-            expand: false,
-            address: 'Sidney No. 1 Lake Park',
-            children: [
-                {
-                    name: 'Jim Black',
-                    age: 55,
-                    address: 'London No. 1 Lake Park'
-                }
-            ]
-        }
     ]
     constructor() {}
 
