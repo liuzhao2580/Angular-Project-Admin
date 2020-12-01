@@ -1,27 +1,11 @@
 <div class="dashboard-box">
     <div class="table-box" style="width: 1000px">
-        <nz-table #nzTable [nzData]="listOfData" [nzShowPagination]="false">
-            <tbody>
-                <ng-template ngFor let-data [ngForOf]="nzTable.data">
-                    <tr>
-                        <td
-                            nzShowExpand
-                            nzShowCheckbox
-                            [nzExpand]="expandSet.has(data.id)"
-                            style="width: 100px;"
-                        ></td>
-                        <td style="width: 100px;">{{ data.name }}</td>
-                        <td style="width: 100px;">{{ data.age }}</td>
-                        <td style="width: 100px;">{{ data.address }}</td>
-                    </tr>
-                    <tr [nzExpand]="true">
-                        <td></td>
-                        <td>{{ data.name }}</td>
-                        <td>{{ data.age }}</td>
-                        <td>{{ data.address }}</td>
-                    </tr>
-                </ng-template>
-            </tbody>
-        </nz-table>
+        <app-child-a>
+            <p>test</p>
+        </app-child-a>
+        <app-child-a class="child">
+            <div style="margin: 10px 0;">zehis</div>
+        </app-child-a>
+        <app-child-b></app-child-b>
     </div>
 </div>
