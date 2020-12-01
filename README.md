@@ -117,3 +117,22 @@ export class Error404Component implements OnInit {
     }
 }
 ```
+
+### `Angular`插槽的使用
+- 1 使用`ng-content` **主要借助于`select`**
+> 子组件
+```html
+<div>
+    <ng-content></ng-content>
+    <ng-content select='.child'></ng-content>
+    <ng-content select='[name=child]'></ng-content>
+</div>
+```
+>父组件
+```js
+<app-child>
+    <p>默认插槽</p>
+    <p class='child'>类名选择插槽</p>
+    <p name='child'>属性选择插槽</p>
+</app-child>
+```

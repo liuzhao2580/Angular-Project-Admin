@@ -15,9 +15,8 @@ import { AsideComponent } from './layout-components/aside/aside.component'
 import { HeaderComponent } from './layout-components/header/header.component'
 import { BreadcrumbComponent } from './layout-components/header/components/breadcrumb/breadcrumb.component'
 import { PersonalComponent } from './layout-components/header/components/personal/personal.component'
-import { SubmenuComponent } from './layout-components/aside/components/submenu/submenu.component';
-import { ChildAComponent } from './dashboard/child-a/child-a.component';
-import { ChildBComponent } from './dashboard/child-b/child-b.component'
+import { SubmenuComponent } from './layout-components/aside/components/submenu/submenu.component'
+import { ChildAComponent } from './dashboard/child-a/child-a.component'
 
 @NgModule({
     declarations: [
@@ -29,13 +28,10 @@ import { ChildBComponent } from './dashboard/child-b/child-b.component'
         DashboardComponent,
         DocumentComponent,
         SubmenuComponent,
-        ChildAComponent,
-        ChildBComponent
+        ChildAComponent
     ],
     imports: [CommonModule, LayoutRoutingModule, ...getModule],
-    providers: [
-        BaseStoreService
-    ]
+    providers: [BaseStoreService]
 })
 export class LayoutModule {
     constructor() {}
