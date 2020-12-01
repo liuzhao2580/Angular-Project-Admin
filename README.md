@@ -129,7 +129,7 @@ export class Error404Component implements OnInit {
 </div>
 ```
 >父组件
-```js
+```html
 <app-child>
     <p>默认插槽</p>
     <p class='child'>类名选择插槽</p>
