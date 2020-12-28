@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core'
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+    selectValue = 'jack'
     constructor() {}
 
     ngOnInit(): void {
         console.log('dashboard', '"dashboard"')
+    }
+    resert() {
+        this.selectValue = null
     }
 }

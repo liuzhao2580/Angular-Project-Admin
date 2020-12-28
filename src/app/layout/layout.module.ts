@@ -18,6 +18,7 @@ import { PersonalComponent } from './layout-components/header/components/persona
 import { SubmenuComponent } from './layout-components/aside/components/submenu/submenu.component'
 import { ChildAComponent } from './dashboard/child-a/child-a.component'
 
+import { NzSelectModule } from 'ng-zorro-antd/select'
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -30,7 +31,7 @@ import { ChildAComponent } from './dashboard/child-a/child-a.component'
         SubmenuComponent,
         ChildAComponent
     ],
-    imports: [CommonModule, LayoutRoutingModule, ...getModule],
+    imports: [CommonModule, LayoutRoutingModule, ...getModule,NzSelectModule],
     providers: [BaseStoreService]
 })
 export class LayoutModule {

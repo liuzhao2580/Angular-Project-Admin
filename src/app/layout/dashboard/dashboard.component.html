@@ -3,7 +3,13 @@
         <app-child-a>
             <p>默认</p>
             <p class="child">测试</p>
-            <div name='child'>child</div>
+            <div name="child">child</div>
         </app-child-a>
+        <nz-select ngModel='jack' nzAllowClear [ngStyle]="{'width': '120px'}">
+            <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+            <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+            <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+        </nz-select>
+        <button (click)='resert()'>重置</button>
     </div>
 </div>
